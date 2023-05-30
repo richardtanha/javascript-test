@@ -15,6 +15,7 @@ function palindromeTest(s){
 }
 
 function anagramTest(sArray){
+    let anagramArray = []
     let outputArray = []
     
     for(let x = 0; x < sArray.length; x++){
@@ -32,14 +33,17 @@ function anagramTest(sArray){
             }
 
         }
-        if(!outputArray[sortedS1]){
-            outputArray[sortedS1] = arrayToAdd
+        if(!anagramArray[sortedS1]){
+            anagramArray[sortedS1] = arrayToAdd
+            outputArray.push(arrayToAdd)
         }
     }
-    console.log(outputArray)
+    let outputString = ""
+    outputArray.forEach(entry => {outputString+='['+entry.toString()+']<br/>'})
+    return outputString
 }
 
-document.getElementById("test1").innerHTML = palindromeTest("MGM");
+document.getElementById("test1").innerHTML = palindromeTest("121");
 document.getElementById("test2").innerHTML = anagramTest(['eat', 'hello', 'cat', 'tea', 'tac', 'ate']); 
 
 </script>
