@@ -1,0 +1,49 @@
+<html>
+<body>
+
+Palindrome test: <p id="test1"></p>
+
+Anagrams test: <p id="test2"></p>
+
+<script>
+
+function palindromeTest(s){
+    let myArray = s.split('');
+    let reverseArray = myArray.reverse()
+    let reverseString = reverseArray.join('')
+    return s === reverseString
+}
+
+function anagramTest(sArray){
+    let outputArray = []
+    
+    for(let x = 0; x < sArray.length; x++){
+        
+        let arrayToAdd = []
+
+        let sortedS1 = sArray[x].split('').sort().join('')
+
+        for(let y = 0; y < sArray.length; y++){
+            
+            let sortedS2 = sArray[y].split('').sort().join('')
+            
+            if(sArray[x].length === sArray[y].length &&  sortedS1 === sortedS2 ){
+                arrayToAdd.push(sArray[y])  
+            }
+
+        }
+        if(!outputArray[sortedS1]){
+            outputArray[sortedS1] = arrayToAdd
+        }
+    }
+    console.log(outputArray)
+}
+
+document.getElementById("test1").innerHTML = palindromeTest("MGM");
+document.getElementById("test2").innerHTML = anagramTest(['eat', 'hello', 'cat', 'tea', 'tac', 'ate']); 
+
+</script>
+
+<body>
+</body>
+</html>
